@@ -3,11 +3,12 @@ import json
 
 # api_url = "https://apps2.dpwh.gov.ph/server/rest/services/DPWH_Public/RoadNetwork_RoadCondition/MapServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=CONDITION%20ASC&outSR=32651&resultOffset=0&resultRecordCount=1000"
 
+headers = {'Cookie': 'AGS_ROLES="419jqfa+uOZgYod4xPOQ8Q=="; incap_ses_1673_2749398=qVxXGYa6O38Hj8QUz7A3F23FrmQAAAAAdMQhGKSaaf2pZV/dwYv9sQ==; visid_incap_2749398=qP154C8KSzyM/JyXM7Tv1sJQiGQAAAAAQUIPAAAAAAA4UBTZvS1fg2xWgjEpH0XN'}
 ## Function to call api data
 def get_data_api(url: str):
-    call_api = requests.get(url, verify=False)
+    call_api = requests.get(url, verify=False, headers=headers)
     print(call_api.status_code)
-
+    
     if call_api.status_code == 200:
         resp_json = call_api.json()
         features_lst = resp_json['features']
@@ -31,6 +32,7 @@ def main_func():
     for count in range(1, 93):
         resultCount = count * 1000
         api_url = f"https://apps2.dpwh.gov.ph/server/rest/services/DPWH_Public/RoadNetwork_RoadCondition/MapServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=CONDITION%20ASC&outSR=32651&resultOffset={offset}&resultRecordCount={resultCount}"
+        
         try:
             feat_lst = get_data_api(api_url)
             output = parse_feat(feat_lst, output)
