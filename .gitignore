@@ -1,6 +1,8 @@
 ## updated igonore files
 *.json
 *.csv
+/environment
+/pw_browsers
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
