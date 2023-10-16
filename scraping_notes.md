@@ -1,6 +1,16 @@
-# PowerBI Scraping for Projected Waste Generation
+# PowerBI Dashboards Scraping
+## Wastewater Discharge Permit
+- More detailed documentation - [Note](./powerbi_scraping/wastewater_scraping_note.md)
+
+## Projected Waste Generation
 - To scrape data from PowerBI [Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNjc4OTE2OTktMDdhMC00YzM1LTkwMjEtYWUxMDIyMjI0MWMwIiwidCI6ImY2ZjRhNjkyLTQzYjMtNDMzYi05MmIyLTY1YzRlNmNjZDkyMCIsImMiOjEwfQ%3D%3D&pageName=ReportSection&fbclid=IwAR264Sfm3ocnSBovLnpGgdSKXljXQeGAx9JpZIxcAS3YyV4voqVpHzPTBNw)
 - PowerBI has POST api to pull the data. So, we need to use bash script to scrape.
+
+- Give permission to run bash file
+```cmd
+chmod +x bash_filename.sh
+```
+
 - Command to run bash
 ```cmd
 sh final_aste_scraping.sh
