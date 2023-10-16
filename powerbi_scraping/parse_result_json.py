@@ -35,8 +35,9 @@ TYPE_TEXT = 1
 TYPE_DATETIME = 7
 
 def extract_raw_data(j):
-    return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM0"]
-
+    # return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM0"] ## original parsing
+    return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM1"]    ## modify for wastewater
+    
 def extract_data_compression_table(j):
     return j['results'][0]['result']['data']['dsr']['DS'][0]["ValueDicts"]
 
@@ -151,15 +152,24 @@ def extract(n):
         result.append(row)
     return(result)
 
-with open("./json_files/projected_waste_test2.json", "r") as read_file:
+with open("./json_files/wastewater_oct15_2nd_ext2.json", "r") as read_file:
     data = json.load(read_file)
     result = extract(data)
 
-    cols = ['region', 'province', 'city_municipality', 'projected_waste', 'year']
+    ## for projected_waste
+    # cols = ['region', 'province', 'city_municipality', 'projected_waste', 'year']
+    
+    ## for water quality
+    # cols = ['year', 'region', 'waterbodies', 'parameter', 'geometric_mean', 'rating']
+    
+    ## for wastewater
+    cols = ['emb_region', 'office_name', 'branch_name', 'branch_city', 'branch_province', 'application_date', 'date_approved', 'date_expired', 'status', 'valid_permit']
+    
+    ## for wastewater discharge
     
     df = pd.DataFrame(result, columns=cols)
     print(df.shape)
-    df.to_csv('csv_files/projected_waste.csv', encoding='utf-8')
+    df.to_csv('csv_files/wastewater_oct15_2nd_ext2.csv', encoding='utf-8')
     print("Finish export!")
     
     
