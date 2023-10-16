@@ -1,0 +1,22 @@
+curl 'https://wabi-east-asia-a-primary-api.analysis.windows.net/public/reports/querydata?synchronous=true' \
+  -H 'Connection: keep-alive' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'sec-ch-ua: "Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' \
+  -H 'ActivityId: c83e101a-3e94-45ec-a736-f30b42ba2487' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'RequestId: 19cd6d5b-4a89-2177-76d8-3f1bb1b4475f' \
+  -H 'X-PowerBI-ResourceKey: 04e8a1ac-82d7-4798-9f4c-c1223a9a1f9b' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Origin: https://app.powerbi.com' \
+  -H 'Sec-Fetch-Site: cross-site' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://app.powerbi.com/' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'dnt: 1' \
+  -H 'sec-gpc: 1' \
+  --data-binary $'{"version":"1.0.0","queries":[{"Query":{"Commands":[{"SemanticQueryDataShapeCommand":{"Query":{"Version":2,"From":[{"Name":"r","Entity":"RECREATIONAL WATERS","Type":0}],"Select":[{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"REGION"},"Name":"RECREATIONAL WATERS.REGION"},{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"WATERBODIES"},"Name":"RECREATIONAL WATERS.WATERBODIES"},{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"PARAMETER"},"Name":"RECREATIONAL WATERS.PARAMETER"},{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"RATING"},"Name":"RECREATIONAL WATERS.RATING"},{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"GEOMETRIC MEAN"},"Name":"Sum(RECREATIONAL WATERS.GEOMETRIC MEAN)"},{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"YEAR"},"Name":"Sum(RECREATIONAL WATERS.YEAR)"}],"OrderBy":[{"Direction":1,"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"r"}},"Property":"PARAMETER"}}}]},"Binding":{"Primary":{"Groupings":[{"Projections":[0,1,2,3,4,5],"Subtotal":1}]},"DataReduction":{"DataVolume":3,"Primary":{"Window":{"Count":30000}}},"Version":1}}}]},"QueryId":""}],"cancelQueries":[],"modelId":960060}'\
+  --compressed | sed 's/"jobIds":\[[^]]*\],//g' | sed 's/"jobId":"[^"]*",//g' | sed 's/"rootActivityId":"[^"]*",//g' | sed 's/"timestamp":"[^"]*",//g' | jq '.' > "water_quality_oct9.json"
