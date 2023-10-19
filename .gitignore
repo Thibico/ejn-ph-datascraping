@@ -3,6 +3,7 @@
 *.csv
 /environment
 /pw_browsers
+.python-version
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
