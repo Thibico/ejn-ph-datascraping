@@ -35,8 +35,8 @@ TYPE_TEXT = 1
 TYPE_DATETIME = 7
 
 def extract_raw_data(j):
-    # return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM0"] ## original parsing
-    return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM1"]    ## modify for wastewater
+    return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM0"] ## original parsing
+    # return j['results'][0]['result']['data']['dsr']['DS'][0]['PH'][0]["DM1"]    ## modify for wastewater
     
 def extract_data_compression_table(j):
     return j['results'][0]['result']['data']['dsr']['DS'][0]["ValueDicts"]
@@ -152,7 +152,7 @@ def extract(n):
         result.append(row)
     return(result)
 
-with open("./json_files/wastewater_oct15_2nd_ext2.json", "r") as read_file:
+with open("./json_files/income_classification.json", "r") as read_file:
     data = json.load(read_file)
     result = extract(data)
 
@@ -163,13 +163,15 @@ with open("./json_files/wastewater_oct15_2nd_ext2.json", "r") as read_file:
     # cols = ['year', 'region', 'waterbodies', 'parameter', 'geometric_mean', 'rating']
     
     ## for wastewater
-    cols = ['emb_region', 'office_name', 'branch_name', 'branch_city', 'branch_province', 'application_date', 'date_approved', 'date_expired', 'status', 'valid_permit']
+    # cols = ['emb_region', 'office_name', 'branch_name', 'branch_city', 'branch_province', 'application_date', 'date_approved', 'date_expired', 'status', 'valid_permit']
     
-    ## for wastewater discharge
+    ## for income-classification
+    cols = ["inter_level", "region", "province", "city_municipality", "income_classification", "city_class", "manila_bay_region"]
+    
     
     df = pd.DataFrame(result, columns=cols)
     print(df.shape)
-    df.to_csv('csv_files/wastewater_oct15_2nd_ext2.csv', encoding='utf-8')
+    df.to_csv('csv_files/income_classification.csv', encoding='utf-8')
     print("Finish export!")
     
     

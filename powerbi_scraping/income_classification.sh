@@ -1,0 +1,22 @@
+curl 'https://wabi-east-asia-a-primary-api.analysis.windows.net/public/reports/querydata?synchronous=true' \
+  -H 'Connection: keep-alive' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'sec-ch-ua: "Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' \
+  -H 'ActivityId: 4884cd16-951d-461a-8246-64172875208e' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'RequestId: caf9d0a9-48be-41ee-96de-1c32de036966' \
+  -H 'X-PowerBI-ResourceKey: e8d02b27-2900-4cb7-98d1-9b5d49aaf26e' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Origin: https://app.powerbi.com' \
+  -H 'Sec-Fetch-Site: cross-site' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://app.powerbi.com/' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'dnt: 1' \
+  -H 'sec-gpc: 1' \
+  --data-binary $'{"version":"1.0.0","queries":[{"Query":{"Commands":[{"SemanticQueryDataShapeCommand":{"Query":{"Version":2,"From":[{"Name":"t","Entity":"Table_1 (6)","Type":0}],"Select":[{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"INTER-LEVEL"},"Name":"Table_1 (6).INTER-LEVEL","NativeReferenceName":"INTER-LEVEL"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"PROVINCE"},"Name":"Table_1 (6).PROVINCE","NativeReferenceName":"PROVINCE"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"CITY/MUNICIPALITY"},"Name":"Table_1 (6).CITY/MUNICIPALITY","NativeReferenceName":"CITY/MUNICIPALITY"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"REGION"},"Name":"Table_1 (6).REGION","NativeReferenceName":"REGION"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"INCOME CLASSIFICATION"},"Name":"Table_1 (6).INCOME CLASSIFICATION","NativeReferenceName":"INCOME CLASSIFICATION"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"CITY CLASS"},"Name":"Table_1 (6).CITY CLASS","NativeReferenceName":"CITY CLASS"},{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"MANILA BAY REGION"},"Name":"Table_1 (6).MANILA BAY REGION","NativeReferenceName":"MANILA BAY REGION"}],"OrderBy":[{"Direction":1,"Expression":{"Column":{"Expression":{"SourceRef":{"Source":"t"}},"Property":"INTER-LEVEL"}}}]},"Binding":{"Primary":{"Groupings":[{"Projections":[0,1,2,3,4,5,6],"Subtotal":1}]},"DataReduction":{"DataVolume":3,"Primary":{"Window":{"Count":30000}}},"Version":1}}}]},"QueryId":""}],"cancelQueries":[],"modelId":1470513}'\
+  --compressed | sed 's/"jobIds":\[[^]]*\],//g' | sed 's/"jobId":"[^"]*",//g' | sed 's/"rootActivityId":"[^"]*",//g' | sed 's/"timestamp":"[^"]*",//g' | jq '.' > "./json_files/income_classification.json"
