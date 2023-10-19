@@ -2,6 +2,9 @@
 ## Wastewater Discharge Permit
 - More detailed documentation - [Note](./powerbi_scraping/wastewater_scraping_note.md)
 
+## Income Classification
+- Scrape data from this PowerBI [Dashboard](https://app.powerbi.com/view?r=eyJrIjoiZThkMDJiMjctMjkwMC00Y2I3LTk4ZDEtOWI1ZDQ5YWFmMjZlIiwidCI6ImY2ZjRhNjkyLTQzYjMtNDMzYi05MmIyLTY1YzRlNmNjZDkyMCIsImMiOjEwfQ%3D%3D)
+
 ## Projected Waste Generation
 - To scrape data from PowerBI [Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNjc4OTE2OTktMDdhMC00YzM1LTkwMjEtYWUxMDIyMjI0MWMwIiwidCI6ImY2ZjRhNjkyLTQzYjMtNDMzYi05MmIyLTY1YzRlNmNjZDkyMCIsImMiOjEwfQ%3D%3D&pageName=ReportSection&fbclid=IwAR264Sfm3ocnSBovLnpGgdSKXljXQeGAx9JpZIxcAS3YyV4voqVpHzPTBNw)
 - PowerBI has POST api to pull the data. So, we need to use bash script to scrape.
