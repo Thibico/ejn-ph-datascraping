@@ -152,7 +152,7 @@ def extract(n):
         result.append(row)
     return(result)
 
-with open("./json_files/income_classification.json", "r") as read_file:
+with open("./json_files/under_evaluation_SWP.json", "r") as read_file:
     data = json.load(read_file)
     result = extract(data)
 
@@ -165,13 +165,13 @@ with open("./json_files/income_classification.json", "r") as read_file:
     ## for wastewater
     # cols = ['emb_region', 'office_name', 'branch_name', 'branch_city', 'branch_province', 'application_date', 'date_approved', 'date_expired', 'status', 'valid_permit']
     
-    ## for income-classification
+    ## for income-classification + under_evaluation
     cols = ["inter_level", "region", "province", "city_municipality", "income_classification", "city_class", "manila_bay_region"]
     
     
     df = pd.DataFrame(result, columns=cols)
     print(df.shape)
-    df.to_csv('csv_files/income_classification.csv', encoding='utf-8')
+    df.to_csv('csv_files/under_evaluation_SWMP.csv', encoding='utf-8')
     print("Finish export!")
     
     

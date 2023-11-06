@@ -1,0 +1,22 @@
+curl 'https://wabi-east-asia-a-primary-api.analysis.windows.net/public/reports/querydata?synchronous=true' \
+  -H 'Connection: keep-alive' \
+  -H 'Pragma: no-cache' \
+  -H 'Cache-Control: no-cache' \
+  -H 'sec-ch-ua: "Chromium";v="116", "Not)A;Brand";v="24", "Google Chrome";v="116"' \
+  -H 'sec-ch-ua-mobile: ?0' \
+  -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36' \
+  -H 'ActivityId: 743deb10-6e1b-401f-9a4b-d05b5f668a04' \
+  -H 'Accept: application/json, text/plain, */*' \
+  -H 'RequestId: 39b9d22c-5b4d-70db-ef47-5c5a09a339db' \
+  -H 'X-PowerBI-ResourceKey: e8d02b27-2900-4cb7-98d1-9b5d49aaf26e' \
+  -H 'Content-Type: application/json;charset=UTF-8' \
+  -H 'Origin: https://app.powerbi.com' \
+  -H 'Sec-Fetch-Site: cross-site' \
+  -H 'Sec-Fetch-Mode: cors' \
+  -H 'Sec-Fetch-Dest: empty' \
+  -H 'Referer: https://app.powerbi.com/' \
+  -H 'Accept-Language: en-US,en;q=0.9' \
+  -H 'dnt: 1' \
+  -H 'sec-gpc: 1' \
+  --data-binary "@under_evaluation_SWM.txt" \
+  --compressed | sed 's/"jobIds":\[[^]]*\],//g' | sed 's/"jobId":"[^"]*",//g' | sed 's/"rootActivityId":"[^"]*",//g' | sed 's/"timestamp":"[^"]*",//g' | jq '.' > "./json_files/under_evaluation_SWP.json"
