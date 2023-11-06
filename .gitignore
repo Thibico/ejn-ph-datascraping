@@ -1,6 +1,10 @@
 ## updated igonore files
 *.json
 *.csv
+*.zip
+*.docx
+./parse_docx/data
+./parse_docx/extract_zip
 /environment
 /pw_browsers
 .python-version
